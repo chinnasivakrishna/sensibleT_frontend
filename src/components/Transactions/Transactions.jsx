@@ -21,7 +21,7 @@ const TransactionPage = () => {
       if (!token) return alert('Please log in first');
 
       try {
-        const response = await axios.get('http://localhost:5000/api/transactions', {
+        const response = await axios.get('https://sensiblet-backend-0ejj.onrender.com/api/transactions', {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -58,7 +58,7 @@ const TransactionPage = () => {
     const newTransaction = { amount, transaction_type: transactionType };
 
     try {
-      const response = await axios.post('http://localhost:5000/api/transactions', newTransaction, {
+      const response = await axios.post('https://sensiblet-backend-0ejj.onrender.com/api/transactions', newTransaction, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const updatedTransactions = [response.data, ...transactions];
@@ -77,7 +77,7 @@ const TransactionPage = () => {
   const handleStatusUpdate = async (transactionId, newStatus) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/transactions/${transactionId}`,
+        `https://sensiblet-backend-0ejj.onrender.com/api/transactions/${transactionId}`,
         { status: newStatus },
         {
           headers: { Authorization: `Bearer ${token}` },
